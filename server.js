@@ -23,7 +23,7 @@ const iceCreams = [
   })
 
   app.get("/icecreams", (req, res) => {
-
+    res.render('flavors', { iceCreams })
   });
 
   app.get("/", (req, res) => {
