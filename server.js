@@ -7,7 +7,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 app.listen(PORT, () => console.log("Great Success!"))
 
-var icecreams = [
+const iceCreams = [
     { name: "vanilla", price: 10, awesomeness: 3 },
     { name: "chocolate", price: 4, awesomeness: 8 },
     { name: "banana", price: 1, awesomeness: 1 },
@@ -17,9 +17,15 @@ var icecreams = [
   ];
 
   app.get('/icecreams/:name', (req, res) => {
-
+    const targetFlavor = req.params.name
+    const found = iceCreams.find(flavor => flavor.name === targetFlavor)
+    res.render('flavor', found)
   })
 
-  app.get("/icecreams", function(req, res) {
+  app.get("/icecreams", (req, res) => {
 
   });
+
+  app.get("/", (req, res) => {
+    res.render('index')
+});
